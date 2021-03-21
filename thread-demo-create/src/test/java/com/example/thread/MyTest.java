@@ -2,6 +2,9 @@ package com.example.thread;
 
 import org.junit.Test;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 /**
  * @author eddie.lee
  * @ProjectName thread-demo
@@ -32,5 +35,17 @@ public class MyTest {
 		for (int i = 0; i < MAX_VALUE; i++) {
 			System.out.println("runnableTest-线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis());
 		}
+	}
+
+	@Test
+	public void callableTest() throws ExecutionException, InterruptedException {
+		FutureTask futureTask = new FutureTask(new MyCallable());
+		Thread thread = new Thread(futureTask);
+		thread.start();
+		int MAX_VALUE = 10;
+		for (int i = 0; i < MAX_VALUE; i++) {
+			System.out.println("callableTest-线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis());
+		}
+		System.out.println(futureTask.get());
 	}
 }

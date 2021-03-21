@@ -118,3 +118,68 @@ MyRunnable线程正在执行：Thread-0 , 时间：1616302606500
 MyRunnable线程正在执行：Thread-0 , 时间：1616302606500
 Disconnected from the target VM, address: '127.0.0.1:58211', transport: 'socket'
 ```
+
+### 1.3 线程创建-实现Callable接口
+
+#### 1.3.1 创建自定义类实现Callable接口
+```java
+public class MyCallable implements Callable<String> {
+
+	public String call() throws Exception {
+		int maxvalue = 10;
+		for (int i = 0; i < maxvalue; i++) {
+			System.out.println(
+					"MyCallable线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis()
+            );
+		}
+		return "MyCallable Finished！";
+	}
+}
+```
+
+#### 1.3.2 单元测试
+```java
+@Test
+public void callableTest() throws ExecutionException, InterruptedException {
+    FutureTask futureTask = new FutureTask(new MyCallable());
+    Thread thread = new Thread(futureTask);
+    thread.start();
+    int MAX_VALUE = 10;
+    for (int i = 0; i < MAX_VALUE; i++) {
+        System.out.println("callableTest-线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis());
+    }
+    System.out.println(futureTask.get());
+}
+```
+
+#### 1.3.3 Console
+```text
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323729
+callableTest-线程正在执行：main , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+MyCallable Finished！
+```
+
+#### 1.3.4 FutureTask的用法及两种常用的使用场景
+>FutureTask可用于异步获取执行结果或取消执行任务的场景。通过传入Runnable或者Callable的任务给FutureTask，直接调用其run方法或者放入线程池执行，之后可以在外部通过FutureTask的get方法异步获取执行结果，因此，FutureTask非常适合用于耗时的计算，主线程可以在完成自己的任务后，再去获取结果。另外，FutureTask还可以确保即使调用了多次run方法，它都只会执行一次Runnable或者Callable任务，或者通过cancel取消FutureTask的执行等。
+
+FutureTask类结构如下：
+
+![](.README_images/ab38e5cb.png)
