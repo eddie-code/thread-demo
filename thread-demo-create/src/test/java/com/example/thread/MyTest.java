@@ -3,6 +3,8 @@ package com.example.thread;
 import org.junit.Test;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
@@ -51,5 +53,16 @@ public class MyTest {
 					+ System.currentTimeMillis() + " , 循环次数：" + i);
 		}
 		System.out.println(futureTask.get());
+	}
+
+	@Test
+	public void executorsTest(){
+		ExecutorService service = Executors.newFixedThreadPool(10);
+		service.execute(new MyRunnable());
+		int MAX_VALUE = 10;
+		for (int i = 0; i < MAX_VALUE; i++) {
+			System.out.println("executorsTest-主线程正在执行：" + Thread.currentThread().getName() + " , 时间："
+					+ System.currentTimeMillis() + " , 循环次数：" + i);
+		}
 	}
 }
