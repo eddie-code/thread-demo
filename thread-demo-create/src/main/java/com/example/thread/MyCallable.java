@@ -17,9 +17,8 @@ public class MyCallable implements Callable<String> {
 	public String call() throws Exception {
 		int maxvalue = 10;
 		for (int i = 0; i < maxvalue; i++) {
-			System.out.println(
-					"MyCallable线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis()
-            );
+			System.out.println("MyCallable线程正在执行：" + Thread.currentThread().getName() + " , 时间："
+					+ System.currentTimeMillis() + " , 循环次数：" + i);
 
 		}
 		return "MyCallable Finished！";

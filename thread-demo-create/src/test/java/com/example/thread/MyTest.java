@@ -18,33 +18,37 @@ import java.util.concurrent.FutureTask;
 public class MyTest {
 
 	@Test
-    public void threadTest() {
+	public void threadTest() {
 		MyThread myThread = new MyThread();
+		myThread.setName("threadTest");
 		myThread.start();
 		int MAX_VALUE = 10;
 		for (int i = 0; i < MAX_VALUE; i++) {
-			System.out.println("threadTest-线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis());
+			System.out.println(
+					"threadTest-线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis());
 		}
 	}
 
 	@Test
 	public void runnableTest() {
-		Thread thread = new Thread(new MyRunnable());
+		Thread thread = new Thread(new MyRunnable(),"runnableTest");
 		thread.start();
 		int MAX_VALUE = 10;
 		for (int i = 0; i < MAX_VALUE; i++) {
-			System.out.println("runnableTest-线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis());
+			System.out.println(
+					"runnableTest-线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis());
 		}
 	}
 
 	@Test
 	public void callableTest() throws ExecutionException, InterruptedException {
-		FutureTask futureTask = new FutureTask(new MyCallable());
-		Thread thread = new Thread(futureTask);
+		FutureTask<String> futureTask = new FutureTask<String>(new MyCallable());
+		Thread thread = new Thread(futureTask, "callableTest");
 		thread.start();
 		int MAX_VALUE = 10;
 		for (int i = 0; i < MAX_VALUE; i++) {
-			System.out.println("callableTest-线程正在执行：" + Thread.currentThread().getName() + " , 时间：" + System.currentTimeMillis());
+			System.out.println("callableTest-主线程正在执行：" + Thread.currentThread().getName() + " , 时间："
+					+ System.currentTimeMillis() + " , 循环次数：" + i);
 		}
 		System.out.println(futureTask.get());
 	}

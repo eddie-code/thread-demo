@@ -154,27 +154,30 @@ public void callableTest() throws ExecutionException, InterruptedException {
 
 #### 1.3.3 Console
 ```text
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323729
-callableTest-线程正在执行：main , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
-MyCallable线程正在执行：Thread-0 , 时间：1616303323730
+callableTest-主线程正在执行：main , 时间：1616333190254 , 循环次数：0
+callableTest-主线程正在执行：main , 时间：1616333190254 , 循环次数：1
+callableTest-主线程正在执行：main , 时间：1616333190255 , 循环次数：2
+callableTest-主线程正在执行：main , 时间：1616333190255 , 循环次数：3
+callableTest-主线程正在执行：main , 时间：1616333190255 , 循环次数：4
+callableTest-主线程正在执行：main , 时间：1616333190255 , 循环次数：5
+callableTest-主线程正在执行：main , 时间：1616333190255 , 循环次数：6
+callableTest-主线程正在执行：main , 时间：1616333190255 , 循环次数：7
+callableTest-主线程正在执行：main , 时间：1616333190255 , 循环次数：8
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：0
+callableTest-主线程正在执行：main , 时间：1616333190255 , 循环次数：9
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：1
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：2
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：3
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：4
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：5
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：6
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：7
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：8
+MyCallable线程正在执行：callableTest , 时间：1616333190255 , 循环次数：9
 MyCallable Finished！
+Disconnected from the target VM, address: '127.0.0.1:50517', transport: 'socket'
+
+Process finished with exit code 0
 ```
 
 #### 1.3.4 FutureTask的用法及两种常用的使用场景
